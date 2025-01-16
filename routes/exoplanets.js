@@ -37,12 +37,7 @@ router.post('/add', upload.single('imageExoplanet'), function (req, res, next) {
         // req.file must be undefined if no file given
         if (req.file === undefined) filename = null;
         else filename = 'images/' + req.file.filename;
-        Exoplanet.save({
-            uniqueName: req.body.uniqueNameExoplanet,
-            hClass: req.body.hClassExoplanet,
-            discoveryYear: req.body.discoveryYearExoplanet,
-            image: filename
-        });
+        saveNewExoplanet(req, filename);
         res.redirect('/exoplanets');
     }
     else {
@@ -127,3 +122,12 @@ router.post('/update', function (req, res, next) {
 
 
 module.exports = router;
+function saveNewExoplanet(req, filename) {
+    Exoplanet.save({
+        uniqueName: req.body.uniqueNameExoplanet,
+        hClass: req.body.hClassExoplanet,
+        discoveryYear: req.body.discoveryYearExoplanet,
+        image: filename
+    });
+}
+
