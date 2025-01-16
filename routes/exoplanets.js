@@ -39,7 +39,7 @@ router.post('/add', upload.single('imageExoplanet'), function (req, res, next) {
         else filename = 'images/' + req.file.filename;
         saveNewExoplanet(req, filename);
 
-        
+        hello = "Hello";
         res.redirect('/exoplanets');
 
         
