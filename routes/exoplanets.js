@@ -38,6 +38,7 @@ router.post('/add', upload.single('imageExoplanet'), function (req, res, next) {
         if (req.file === undefined) filename = null;
         else filename = 'images/' + req.file.filename;
         saveNewExoplanet(req, filename);
+        // const
         hello = "Hello";
         res.redirect('/exoplanets');
 
